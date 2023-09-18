@@ -3,8 +3,7 @@ from src.save_file import JsonSaver
 import os
 
 # The path to save files with vacancies
-file_path_json = '../job_parser/saved_vacancies/json_vacancies.json'
-file_path_csv = '../job_parser/saved_vacancies/csv_vacancies.csv'
+file_path_json = '../saved_vacancies/json_vacancies.json'
 
 
 def search_vacancy():
@@ -46,7 +45,7 @@ def search_vacancy():
 
 def save_vacancies(vacancies):
     """Function for saving vacancies to a file"""
-    json_save = JsonSaver(vacancies, f'../job_parser/saved_vacancies/json_vacancies.json')
+    json_save = JsonSaver(vacancies, f'../saved_vacancies/json_vacancies.json')
     json_save.save_to_file()
     print(f'the file was successfully saved along the path: ../job_parser/saved_vacancies/')
 
@@ -54,7 +53,7 @@ def save_vacancies(vacancies):
 def remove_vacancies(vacancies):
     """Function for deleting a vacancy from a file"""
 
-    json_save = JsonSaver(vacancies, f'../job_parser/saved_vacancies/json_vacancies.json')
+    json_save = JsonSaver(vacancies, f'../saved_vacancies/json_vacancies.json')
 
     remove_vac = input('Enter the exact name of the vacancy to delete: ')
 
@@ -68,7 +67,7 @@ def remove_vacancies(vacancies):
 def get_vac_by_salary(vacancies):
     """Function for getting a vacancy based on salary"""
 
-    json_save = JsonSaver(vacancies, f'../job_parser/saved_vacancies/json_vacancies.json')
+    json_save = JsonSaver(vacancies, f'../saved_vacancies/json_vacancies.json')
 
     vac_by_sal = int(input('Enter salary to get vacancies: '))
 
@@ -83,7 +82,7 @@ def get_vac_by_salary(vacancies):
 def get_vac_by_city(vacancies):
     """Function for getting a vacancy based on the city"""
 
-    json_save = JsonSaver(vacancies, f'../job_parser/saved_vacancies/json_vacancies.json')
+    json_save = JsonSaver(vacancies, f'../saved_vacancies/json_vacancies.json')
 
     vac_by_city = input('Enter the name city to get vacancies: ')
 
@@ -98,20 +97,21 @@ def get_vac_by_city(vacancies):
 def get_top_vac(vacancies):
     """Function for getting top 3 vacancies"""
 
-    json_save = JsonSaver(vacancies, f'../job_parser/saved_vacancies/json_vacancies.json')
+    json_save = JsonSaver(vacancies, f'../saved_vacancies/json_vacancies.json')
 
     if os.path.isfile(file_path_json):
         vac_top = json_save.top_vacancies(3)
-        for vac in vac_top:
-            print(vac)
-    else:
-        print('There is no file with vacancies')
+        return vac_top
+    #     for vac in vac_top:
+    #         print(vac)
+    # else:
+    #     print('There is no file with vacancies')
 
 
 def get_all_vacancies(vacancies):
     """Function for getting all vacancies"""
 
-    json_save = JsonSaver(vacancies, f'../job_parser/saved_vacancies/json_vacancies.json')
+    json_save = JsonSaver(vacancies, f'../saved_vacancies/json_vacancies.json')
 
     if os.path.isfile(file_path_json):
         vac_all = json_save.load_from_file()

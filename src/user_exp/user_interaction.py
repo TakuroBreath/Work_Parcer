@@ -80,8 +80,8 @@ class SecondWindow:
         hh_vacancies = self.hh_site.parse(vacancies)
 
         if len(hh_vacancies) > 0:
-            messagebox.showinfo("Nice!", "Job search completed successfully")
-            return hh_vacancies
+            messagebox.showinfo("Nice!", {get_top_vac(hh_vacancies)})
+            save_vacancies(hh_vacancies)
         else:
             messagebox.showerror("Fail(", "Job search failed")
 
@@ -90,8 +90,8 @@ class SecondWindow:
         sj_vacancies = self.sj_site.parse(vacancies)
 
         if len(sj_vacancies) > 0:
-            messagebox.showinfo("Nice!", "Job search completed successfully")
-            return sj_vacancies
+            messagebox.showinfo("Nice!", {get_top_vac(sj_vacancies)})
+            save_vacancies(sj_vacancies)
         else:
             messagebox.showerror("Fail(", "Job search failed")
 
